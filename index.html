@@ -3,419 +3,665 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown Timer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-
-        .timer-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            text-align: center;
-            min-width: 400px;
-        }
-
-        .timer-title {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            font-weight: 300;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .time-inputs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .input-group label {
-            font-size: 0.9em;
-            margin-bottom: 5px;
-            opacity: 0.8;
-        }
-
-        .input-group input {
-            width: 60px;
-            height: 50px;
-            font-size: 1.2em;
-            text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .input-group input:focus {
-            border-color: rgba(255, 255, 255, 0.8);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .input-group input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .timer-display {
-            font-size: 4em;
-            font-weight: bold;
-            margin: 30px 0;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
-        }
-
-        .timer-display.warning {
-            color: #ff6b6b;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            font-size: 1.1em;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            min-width: 100px;
-        }
-
-        .btn-start {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            color: white;
-        }
-
-        .btn-start:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
-        }
-
-        .btn-pause {
-            background: linear-gradient(45deg, #ff9800, #f57c00);
-            color: white;
-        }
-
-        .btn-pause:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
-        }
-
-        .btn-reset {
-            background: linear-gradient(45deg, #f44336, #d32f2f);
-            color: white;
-        }
-
-        .btn-reset:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-
-        .progress-ring {
-            position: relative;
-            margin: 20px auto;
-        }
-
-        .progress-ring svg {
-            transform: rotate(-90deg);
-        }
-
-        .progress-ring circle {
-            fill: transparent;
-            stroke: rgba(255, 255, 255, 0.3);
-            stroke-width: 4;
-        }
-
-        .progress-ring .progress {
-            stroke: #4CAF50;
-            stroke-linecap: round;
-            transition: stroke-dashoffset 0.5s ease;
-        }
-
-        @media (max-width: 480px) {
-            .timer-container {
-                padding: 20px;
-                min-width: 300px;
-            }
-
-            .timer-display {
-                font-size: 2.5em;
-            }
-
-            .timer-title {
-                font-size: 2em;
-            }
-        }
-    </style>
+    <meta name="description" content="DevLili - Full-stack Developer & UI/UX Designer. From concept to code, I bring ideas to life. Skilled in React, Node.js, PHP, MongoDB and more.">
+    <meta name="keywords" content="DevLili, Full-stack Developer, UI/UX Designer, React, Node.js, PHP, MongoDB, Web Development, Portfolio">
+    <meta name="author" content="DevLili">
+    <meta property="og:title" content="DevLili - Full-stack Developer Portfolio">
+    <meta property="og:description" content="From concept to code, I bring ideas to life. Full-stack developer specializing in modern web technologies.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DevLili - Full-stack Developer Portfolio">
+    <meta name="twitter:description" content="From concept to code, I bring ideas to life.">
+    
+    <title>DevLili - Full-stack Developer Portfolio</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="timer-container">
-        <h1 class="timer-title">Countdown Timer</h1>
-        
-        <div class="time-inputs">
-            <div class="input-group">
-                <label>Hours</label>
-                <input type="number" id="hours" min="0" max="23" value="0" placeholder="00">
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>DevLili</h2>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link"><i class="fas fa-user"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#skills" class="nav-link"><i class="fas fa-code"></i> Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#projects" class="nav-link"><i class="fas fa-laptop-code"></i> Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#blog" class="nav-link"><i class="fas fa-blog"></i> Blog & Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#connect" class="nav-link"><i class="fas fa-handshake"></i> Let's Connect</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="nav-icons">
+                    <a href="https://github.com/devlili237" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://tiktok.com/@devlili6" target="_blank" class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
-            <div class="input-group">
-                <label>Minutes</label>
-                <input type="number" id="minutes" min="0" max="59" value="5" placeholder="00">
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="gradient-text">DevLili</span>
+                </h1>
+                <p class="hero-tagline">From concept to code, I bring ideas to life.</p>
+                <p class="hero-description">
+                    Full-stack developer passionate about creating beautiful, functional, and user-friendly web experiences.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> View My Work
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-paper-plane"></i> Get In Touch
+                    </a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://github.com/devlili237" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://tiktok.com/@devlili6" target="_blank" class="social-link">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
             </div>
-            <div class="input-group">
-                <label>Seconds</label>
-                <input type="number" id="seconds" min="0" max="59" value="0" placeholder="00">
+            <div class="hero-image">
+                <div class="image-placeholder">
+                    <i class="fas fa-user-circle"></i>
+                </div>
             </div>
         </div>
-
-        <div class="progress-ring">
-            <svg width="200" height="200">
-                <circle cx="100" cy="100" r="90"></circle>
-                <circle cx="100" cy="100" r="90" class="progress" id="progress-circle"></circle>
-            </svg>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
+    </section>
 
-        <div class="timer-display" id="display">05:00</div>
-
-        <div class="controls">
-            <button class="btn btn-start" id="startBtn">Start</button>
-            <button class="btn btn-pause" id="pauseBtn" disabled>Pause</button>
-            <button class="btn btn-reset" id="resetBtn">Reset</button>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know the person behind the code</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-container">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                
+                <div class="about-text">
+                    <h3>Full-stack Developer & Creative Designer</h3>
+                    <p>
+                        I'm DevLili, a passionate full-stack developer with a keen eye for design and user experience. 
+                        With expertise spanning both frontend and backend technologies, I create comprehensive web solutions 
+                        that not only look great but perform exceptionally.
+                    </p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-laptop-code"></i>
+                            <h4>Full-stack Developer</h4>
+                            <p>Building end-to-end web applications with modern technologies</p>
+                        </div>
+                        
+                        <div class="expertise-item">
+                            <i class="fas fa-paint-brush"></i>
+                            <h4>UI/UX Designer</h4>
+                            <p>Creating intuitive and visually appealing user interfaces</p>
+                        </div>
+                        
+                        <div class="expertise-item">
+                            <i class="fas fa-file-alt"></i>
+                            <h4>Microsoft Office Suite</h4>
+                            <p>Proficient in productivity tools for business solutions</p>
+                        </div>
+                        
+                        <div class="expertise-item">
+                            <i class="fas fa-palette"></i>
+                            <h4>Adobe Photoshop</h4>
+                            <p>Skilled in graphic design and photo manipulation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        class CountdownTimer {
-            constructor() {
-                this.totalSeconds = 0;
-                this.remainingSeconds = 0;
-                this.intervalId = null;
-                this.isRunning = false;
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">Technologies I work with</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Frontend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-bootstrap"></i>
+                            <span>Bootstrap</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-wind"></i>
+                            <span>Tailwind CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-sass"></i>
+                            <span>SASS</span>
+                        </div>
+                    </div>
+                </div>
                 
-                this.hoursInput = document.getElementById('hours');
-                this.minutesInput = document.getElementById('minutes');
-                this.secondsInput = document.getElementById('seconds');
-                this.display = document.getElementById('display');
-                this.startBtn = document.getElementById('startBtn');
-                this.pauseBtn = document.getElementById('pauseBtn');
-                this.resetBtn = document.getElementById('resetBtn');
-                this.progressCircle = document.getElementById('progress-circle');
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-php"></i>
+                            <span>PHP</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Express</span>
+                        </div>
+                    </div>
+                </div>
                 
-                this.setupProgressCircle();
-                this.bindEvents();
-                this.updateDisplay();
-            }
-
-            setupProgressCircle() {
-                const radius = 90;
-                const circumference = 2 * Math.PI * radius;
-                this.progressCircle.style.strokeDasharray = circumference;
-                this.progressCircle.style.strokeDashoffset = circumference;
-            }
-
-            bindEvents() {
-                this.startBtn.addEventListener('click', () => this.start());
-                this.pauseBtn.addEventListener('click', () => this.pause());
-                this.resetBtn.addEventListener('click', () => this.reset());
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Database</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>SQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-leaf"></i>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
                 
-                [this.hoursInput, this.minutesInput, this.secondsInput].forEach(input => {
-                    input.addEventListener('input', () => {
-                        if (!this.isRunning) {
-                            this.updateDisplay();
-                        }
-                    });
-                });
-            }
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>VS Code</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-figma"></i>
+                            <span>Figma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            getTotalSeconds() {
-                const hours = parseInt(this.hoursInput.value) || 0;
-                const minutes = parseInt(this.minutesInput.value) || 0;
-                const seconds = parseInt(this.secondsInput.value) || 0;
-                return hours * 3600 + minutes * 60 + seconds;
-            }
-
-            start() {
-                if (!this.isRunning) {
-                    this.totalSeconds = this.getTotalSeconds();
-                    this.remainingSeconds = this.totalSeconds;
-                }
-
-                if (this.remainingSeconds <= 0) {
-                    alert('Please set a valid time!');
-                    return;
-                }
-
-                this.isRunning = true;
-                this.startBtn.disabled = true;
-                this.pauseBtn.disabled = false;
-                this.disableInputs(true);
-
-                this.intervalId = setInterval(() => {
-                    this.remainingSeconds--;
-                    this.updateDisplay();
-                    this.updateProgress();
-
-                    if (this.remainingSeconds <= 0) {
-                        this.complete();
-                    }
-                }, 1000);
-            }
-
-            pause() {
-                this.isRunning = false;
-                clearInterval(this.intervalId);
-                this.startBtn.disabled = false;
-                this.pauseBtn.disabled = true;
-            }
-
-            reset() {
-                this.isRunning = false;
-                clearInterval(this.intervalId);
-                this.remainingSeconds = 0;
-                this.totalSeconds = 0;
-                
-                this.startBtn.disabled = false;
-                this.pauseBtn.disabled = true;
-                this.disableInputs(false);
-                
-                this.display.classList.remove('warning');
-                this.updateDisplay();
-                this.resetProgress();
-            }
-
-            complete() {
-                this.isRunning = false;
-                clearInterval(this.intervalId);
-                this.startBtn.disabled = false;
-                this.pauseBtn.disabled = true;
-                this.disableInputs(false);
-                
-                alert('Time\'s up! ⏰');
-                this.playNotificationSound();
-            }
-
-            updateDisplay() {
-                let seconds;
-                
-                if (this.isRunning || this.remainingSeconds > 0) {
-                    seconds = this.remainingSeconds;
-                } else {
-                    seconds = this.getTotalSeconds();
-                }
-
-                const hours = Math.floor(seconds / 3600);
-                const minutes = Math.floor((seconds % 3600) / 60);
-                const secs = seconds % 60;
-
-                let displayText;
-                if (hours > 0) {
-                    displayText = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-                } else {
-                    displayText = `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-                }
-
-                this.display.textContent = displayText;
-
-                // Add warning style when time is running low
-                if (this.isRunning && seconds <= 10 && seconds > 0) {
-                    this.display.classList.add('warning');
-                } else {
-                    this.display.classList.remove('warning');
-                }
-            }
-
-            updateProgress() {
-                const radius = 90;
-                const circumference = 2 * Math.PI * radius;
-                const progress = (this.totalSeconds - this.remainingSeconds) / this.totalSeconds;
-                const offset = circumference - (progress * circumference);
-                this.progressCircle.style.strokeDashoffset = offset;
-            }
-
-            resetProgress() {
-                const radius = 90;
-                const circumference = 2 * Math.PI * radius;
-                this.progressCircle.style.strokeDashoffset = circumference;
-            }
-
-            disableInputs(disabled) {
-                this.hoursInput.disabled = disabled;
-                this.minutesInput.disabled = disabled;
-                this.secondsInput.disabled = disabled;
-            }
-
-            playNotificationSound() {
-                // Create a simple beep sound using Web Audio API
-                try {
-                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">A showcase of my professional and personal work</p>
+            </div>
+            
+            <div class="projects-content">
+                <h3 class="projects-category">Enterprise Experience - Ghostroar Digital</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Scipro-immo Real Estate Website</h4>
+                            <p>Modern real estate platform with advanced property search, user management, and responsive design.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag"><i class="fab fa-html5"></i> HTML</span>
+                                <span class="tech-tag"><i class="fab fa-css3-alt"></i> CSS</span>
+                                <span class="tech-tag"><i class="fab fa-js"></i> JavaScript</span>
+                                <span class="tech-tag"><i class="fab fa-php"></i> PHP</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://scipro-immo.com/" target="_blank" class="btn btn-small">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Groupe Créol'Océan Website</h4>
+                            <p>Corporate website for a leading business group with modern design and comprehensive company information.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag"><i class="fab fa-html5"></i> HTML</span>
+                                <span class="tech-tag"><i class="fab fa-css3-alt"></i> CSS</span>
+                                <span class="tech-tag"><i class="fab fa-js"></i> JavaScript</span>
+                                <span class="tech-tag"><i class="fab fa-php"></i> PHP</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://groupecreolocean.fr/" target="_blank" class="btn btn-small">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="projects-category">Personal Projects</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>GreenEstate Real Estate Website</h4>
+                            <p>Eco-friendly real estate platform focusing on sustainable properties with modern search functionality.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag"><i class="fab fa-react"></i> React</span>
+                                <span class="tech-tag"><i class="fab fa-node-js"></i> Node.js</span>
+                                <span class="tech-tag"><i class="fas fa-database"></i> MongoDB</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     
-                    oscillator.frequency.value = 800;
-                    oscillator.type = 'sine';
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Youth Mentorship Web App</h4>
+                            <p>Platform connecting young people with mentors, featuring chat, scheduling, and progress tracking.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag"><i class="fab fa-react"></i> React</span>
+                                <span class="tech-tag"><i class="fas fa-rocket"></i> Express</span>
+                                <span class="tech-tag"><i class="fas fa-database"></i> MySQL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     
-                    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>E-Commerce Website</h4>
+                            <p>Full-featured online store with payment integration, inventory management, and admin dashboard.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag"><i class="fab fa-react"></i> React</span>
+                                <span class="tech-tag"><i class="fab fa-node-js"></i> Node.js</span>
+                                <span class="tech-tag"><i class="fas fa-database"></i> MongoDB</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     
-                    oscillator.start(audioContext.currentTime);
-                    oscillator.stop(audioContext.currentTime + 1);
-                } catch (e) {
-                    console.log('Audio notification not supported');
-                }
-            }
-        }
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-blog"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>CRUD Blog Platform</h4>
+                            <p>Dynamic blog platform with full CRUD operations, user authentication, and content management.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag"><i class="fab fa-php"></i> PHP</span>
+                                <span class="tech-tag"><i class="fas fa-database"></i> MySQL</span>
+                                <span class="tech-tag"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Restaurant Website</h4>
+                            <p>Local restaurant website with online menu, reservation system, and delivery integration.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag"><i class="fab fa-html5"></i> HTML</span>
+                                <span class="tech-tag"><i class="fab fa-css3-alt"></i> CSS</span>
+                                <span class="tech-tag"><i class="fab fa-js"></i> JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Initialize the timer when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            new CountdownTimer();
-        });
-    </script>
+    <!-- Content Creation Section -->
+    <section class="content-creation">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Content Creation</h2>
+                <p class="section-subtitle">Teaching coding through TikTok tutorials</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="content-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>Coding Tutorials</h3>
+                    <p>Creating engaging and educational coding content for aspiring developers</p>
+                </div>
+                
+                <div class="content-card">
+                    <div class="content-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education</h3>
+                    <p>Breaking down complex programming concepts into digestible lessons</p>
+                </div>
+                
+                <div class="content-card">
+                    <div class="content-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Social Media</h3>
+                    <p>Building a community of learners and sharing knowledge across platforms</p>
+                </div>
+                
+                <div class="content-card">
+                    <div class="content-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Teaching</h3>
+                    <p>Passionate about helping others learn to code and build their first projects</p>
+                </div>
+            </div>
+            
+            <div class="tiktok-cta">
+                <a href="https://tiktok.com/@devlili6" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-tiktok"></i> Watch My Tutorials
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog & Tips Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Blog & Tips</h2>
+                <p class="section-subtitle">Insights, tutorials, and industry knowledge</p>
+            </div>
+            
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Getting Started with React Hooks</h3>
+                        <p>Learn the fundamentals of React Hooks and how they can simplify your component logic...</p>
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> December 2024</span>
+                            <span><i class="fas fa-clock"></i> 5 min read</span>
+                        </div>
+                        <a href="#" class="read-more">
+                            <i class="fas fa-arrow-right"></i> Read More
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Mobile-First Design Principles</h3>
+                        <p>Essential guidelines for creating responsive designs that work beautifully on all devices...</p>
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> November 2024</span>
+                            <span><i class="fas fa-clock"></i> 7 min read</span>
+                        </div>
+                        <a href="#" class="read-more">
+                            <i class="fas fa-arrow-right"></i> Read More
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Database Optimization Tips</h3>
+                        <p>Improve your application performance with these proven database optimization techniques...</p>
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> October 2024</span>
+                            <span><i class="fas fa-clock"></i> 8 min read</span>
+                        </div>
+                        <a href="#" class="read-more">
+                            <i class="fas fa-arrow-right"></i> Read More
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Let's Connect Section -->
+    <section id="connect" class="connect">
+        <div class="container">
+            <div class="connect-content">
+                <h2>Let's Build Something Amazing Together</h2>
+                <p>Ready to bring your ideas to life? I'm always excited to work on new projects and collaborate with fellow creators.</p>
+                
+                <div class="connect-buttons">
+                    <a href="https://tiktok.com/@devlili6" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-users"></i> Find me on Social Media
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-handshake"></i> Let's Collaborate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's discuss your next project</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">
+                                <i class="fas fa-user"></i> Full Name
+                            </label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fas fa-envelope"></i> Email Address
+                            </label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">
+                                <i class="fas fa-message"></i> Message
+                            </label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Connect with me</h3>
+                    <p>Feel free to reach out through any of these platforms:</p>
+                    
+                    <div class="contact-links">
+                        <a href="https://github.com/devlili237" target="_blank" class="contact-link">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        
+                        <a href="https://tiktok.com/@devlili6" target="_blank" class="contact-link">
+                            <i class="fab fa-tiktok"></i>
+                            <span>TikTok</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DevLili</h3>
+                    <p>From concept to code, I bring ideas to life.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                        <li><a href="#projects"><i class="fas fa-laptop-code"></i> Projects</a></li>
+                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Follow Me</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/devlili237" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://tiktok.com/@devlili6" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 DevLili. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
