@@ -3,419 +3,504 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown Timer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-
-        .timer-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            text-align: center;
-            min-width: 400px;
-        }
-
-        .timer-title {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            font-weight: 300;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .time-inputs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .input-group label {
-            font-size: 0.9em;
-            margin-bottom: 5px;
-            opacity: 0.8;
-        }
-
-        .input-group input {
-            width: 60px;
-            height: 50px;
-            font-size: 1.2em;
-            text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .input-group input:focus {
-            border-color: rgba(255, 255, 255, 0.8);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .input-group input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .timer-display {
-            font-size: 4em;
-            font-weight: bold;
-            margin: 30px 0;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
-        }
-
-        .timer-display.warning {
-            color: #ff6b6b;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            font-size: 1.1em;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            min-width: 100px;
-        }
-
-        .btn-start {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            color: white;
-        }
-
-        .btn-start:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
-        }
-
-        .btn-pause {
-            background: linear-gradient(45deg, #ff9800, #f57c00);
-            color: white;
-        }
-
-        .btn-pause:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
-        }
-
-        .btn-reset {
-            background: linear-gradient(45deg, #f44336, #d32f2f);
-            color: white;
-        }
-
-        .btn-reset:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-
-        .progress-ring {
-            position: relative;
-            margin: 20px auto;
-        }
-
-        .progress-ring svg {
-            transform: rotate(-90deg);
-        }
-
-        .progress-ring circle {
-            fill: transparent;
-            stroke: rgba(255, 255, 255, 0.3);
-            stroke-width: 4;
-        }
-
-        .progress-ring .progress {
-            stroke: #4CAF50;
-            stroke-linecap: round;
-            transition: stroke-dashoffset 0.5s ease;
-        }
-
-        @media (max-width: 480px) {
-            .timer-container {
-                padding: 20px;
-                min-width: 300px;
-            }
-
-            .timer-display {
-                font-size: 2.5em;
-            }
-
-            .timer-title {
-                font-size: 2em;
-            }
-        }
-    </style>
+    <title>McDonald's - Order Online</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <div class="timer-container">
-        <h1 class="timer-title">Countdown Timer</h1>
-        
-        <div class="time-inputs">
-            <div class="input-group">
-                <label>Hours</label>
-                <input type="number" id="hours" min="0" max="23" value="0" placeholder="00">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="https://cdn.worldvectorlogo.com/logos/mcdonalds-15.svg" alt="McDonald's" class="logo">
             </div>
-            <div class="input-group">
-                <label>Minutes</label>
-                <input type="number" id="minutes" min="0" max="59" value="5" placeholder="00">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
+                <li class="nav-item"><a href="#deals" class="nav-link">Deals</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="account-btn">
+                    <i class="fas fa-user"></i>
+                    My Account
+                </button>
+                <button class="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    Cart
+                    <span class="cart-count">0</span>
+                </button>
             </div>
-            <div class="input-group">
-                <label>Seconds</label>
-                <input type="number" id="seconds" min="0" max="59" value="0" placeholder="00">
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
+    </nav>
 
-        <div class="progress-ring">
-            <svg width="200" height="200">
-                <circle cx="100" cy="100" r="90"></circle>
-                <circle cx="100" cy="100" r="90" class="progress" id="progress-circle"></circle>
-            </svg>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">BURGER</h1>
+                    <p class="hero-subtitle">Delicious meals delivered fresh to your door</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary order-btn">Order Now</button>
+                        <button class="btn btn-secondary menu-btn">View Menu</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="food-items">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop&crop=center" alt="Burger" class="food-item burger">
+                        <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=300&h=400&fit=crop&crop=center" alt="Fries" class="food-item fries">
+                        <img src="https://images.unsplash.com/photo-1546554137-f86b9593a222?w=250&h=350&fit=crop&crop=center" alt="Drink" class="food-item drink">
+                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=200&h=200&fit=crop&crop=center" alt="Ice Cream" class="food-item dessert">
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="timer-display" id="display">05:00</div>
+    <!-- Food Categories -->
+    <section class="categories">
+        <div class="container">
+            <div class="category-grid">
+                <div class="category-item" data-category="burgers">
+                    <div class="category-icon">🍔</div>
+                    <span>Burgers</span>
+                </div>
+                <div class="category-item" data-category="breakfast">
+                    <div class="category-icon">🥞</div>
+                    <span>Breakfast</span>
+                </div>
+                <div class="category-item" data-category="pizza">
+                    <div class="category-icon">🍕</div>
+                    <span>Pizza</span>
+                </div>
+                <div class="category-item" data-category="salads">
+                    <div class="category-icon">🥗</div>
+                    <span>Salads</span>
+                </div>
+                <div class="category-item" data-category="fries">
+                    <div class="category-icon">🍟</div>
+                    <span>French Fries</span>
+                </div>
+                <div class="category-item" data-category="drinks">
+                    <div class="category-icon">🥤</div>
+                    <span>Drinks</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="controls">
-            <button class="btn btn-start" id="startBtn">Start</button>
-            <button class="btn btn-pause" id="pauseBtn" disabled>Pause</button>
-            <button class="btn btn-reset" id="resetBtn">Reset</button>
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            
+            <!-- Food Items Grid -->
+            <div class="menu-grid">
+                <!-- Burger Items -->
+                <div class="menu-item" data-category="burgers">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400&h=300&fit=crop&crop=center" alt="Golden French Fries">
+                        <div class="item-overlay">
+                            <button class="add-to-cart-btn" data-id="1">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Golden French Fries</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★☆</span>
+                        </div>
+                        <p class="price">$20.99</p>
+                        <div class="item-details">
+                            <p>Crispy golden fries made from premium potatoes</p>
+                            <span class="calories">320 cal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="burgers">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop&crop=center" alt="McDonald's Dubai">
+                        <div class="item-overlay">
+                            <button class="add-to-cart-btn" data-id="2">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>McDonald's - Dubai</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                        </div>
+                        <p class="price">$31.99</p>
+                        <div class="item-details">
+                            <p>Signature Dubai burger with special sauce</p>
+                            <span class="calories">580 cal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="burgers">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400&h=300&fit=crop&crop=center" alt="Burger French Fries">
+                        <div class="item-overlay">
+                            <button class="add-to-cart-btn" data-id="3">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Burger French Fries</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★☆</span>
+                        </div>
+                        <p class="price">$30.69</p>
+                        <div class="item-details">
+                            <p>Classic burger combo with crispy fries</p>
+                            <span class="calories">750 cal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="burgers">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&h=300&fit=crop&crop=center" alt="Spicy Chicken Burger">
+                        <div class="item-overlay">
+                            <button class="add-to-cart-btn" data-id="4">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Spicy Chicken Burger</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★☆</span>
+                        </div>
+                        <p class="price">$28.99</p>
+                        <div class="item-details">
+                            <p>Spicy chicken breast with jalapeños</p>
+                            <span class="calories">520 cal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="fries">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1608039755401-742074f0548d?w=400&h=300&fit=crop&crop=center" alt="Combo Package v1">
+                        <div class="item-overlay">
+                            <button class="add-to-cart-btn" data-id="5">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Combo Package v1</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                        </div>
+                        <p class="price">$37.99</p>
+                        <div class="item-details">
+                            <p>Complete meal with burger, fries and drink</p>
+                            <span class="calories">890 cal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1546554137-f86b9593a222?w=400&h=300&fit=crop&crop=center" alt="McDonald's Deals">
+                        <div class="item-overlay">
+                            <button class="add-to-cart-btn" data-id="6">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>McDonald's Deals</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★☆</span>
+                        </div>
+                        <p class="price">$33.99</p>
+                        <div class="item-details">
+                            <p>Special combo deal with multiple items</p>
+                            <span class="calories">1050 cal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drinks Section -->
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=300&fit=crop&crop=center" alt="Fresh Orange Juice">
+                        <div class="item-overlay">
+                            <button class="add-to-cart-btn" data-id="7">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Fresh Orange Juice</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                        </div>
+                        <p class="price">$8.99</p>
+                        <div class="item-details">
+                            <p>100% fresh squeezed orange juice</p>
+                            <span class="calories">110 cal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop&crop=center" alt="Iced Coffee">
+                        <div class="item-overlay">
+                            <button class="add-to-cart-btn" data-id="8">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Iced Coffee</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★☆</span>
+                        </div>
+                        <p class="price">$5.99</p>
+                        <div class="item-details">
+                            <p>Premium iced coffee with cream</p>
+                            <span class="calories">180 cal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=300&fit=crop&crop=center" alt="Milkshake">
+                        <div class="item-overlay">
+                            <button class="add-to-cart-btn" data-id="9">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Vanilla Milkshake</h3>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                        </div>
+                        <p class="price">$7.99</p>
+                        <div class="item-details">
+                            <p>Creamy vanilla milkshake with whipped cream</p>
+                            <span class="calories">420 cal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Deals Section -->
+    <section id="deals" class="special-deals">
+        <div class="container">
+            <h2 class="section-title">SPECIAL DEALS</h2>
+            
+            <div class="deals-navigation">
+                <button class="nav-arrow prev-arrow" id="prevDeal">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="page-indicators">
+                    <span class="page-number active">1</span>
+                    <span class="page-number">2</span>
+                    <span class="page-number">3</span>
+                </div>
+                <button class="nav-arrow next-arrow" id="nextDeal">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="deals-carousel">
+                <div class="deal-card active">
+                    <div class="deal-content">
+                        <div class="deal-info">
+                            <h3>McDonald's - Dubai</h3>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                            </div>
+                            <div class="deal-items">
+                                <div class="deal-item">
+                                    <span class="item-icon">🍔</span>
+                                    <span>3 McDonald's Burger</span>
+                                </div>
+                                <div class="deal-item">
+                                    <span class="item-icon">🥤</span>
+                                    <span>1 Iced Drink - 230ml</span>
+                                </div>
+                                <div class="deal-item">
+                                    <span class="item-icon">🍟</span>
+                                    <span>1 French Fries - Regular</span>
+                                </div>
+                            </div>
+                            <div class="deal-price">
+                                <span class="total-label">Total Cost:</span>
+                                <span class="price">$87.00</span>
+                            </div>
+                            <button class="btn btn-primary order-btn">Order Now</button>
+                        </div>
+                        <div class="deal-image">
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=400&fit=crop&crop=center" alt="McDonald's Dubai Deal">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deal-card">
+                    <div class="deal-content">
+                        <div class="deal-info">
+                            <h3>McDonald's - Italy</h3>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                            </div>
+                            <div class="deal-items">
+                                <div class="deal-item">
+                                    <span class="item-icon">🍔</span>
+                                    <span>2 McDonald's Burger</span>
+                                </div>
+                                <div class="deal-item">
+                                    <span class="item-icon">🥤</span>
+                                    <span>2 Iced Drink - 350ml</span>
+                                </div>
+                                <div class="deal-item">
+                                    <span class="item-icon">🍟</span>
+                                    <span>1 French Fries - Regular</span>
+                                </div>
+                            </div>
+                            <div class="deal-price">
+                                <span class="total-label">Total Cost:</span>
+                                <span class="price">$77.00</span>
+                            </div>
+                            <button class="btn btn-primary order-btn">Order Now</button>
+                        </div>
+                        <div class="deal-image">
+                            <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=500&h=400&fit=crop&crop=center" alt="McDonald's Italy Deal">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Accept Cards</h3>
+                    <p>Cards accepted on delivery. Contactless payments welcomed.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Online Booking</h3>
+                    <p>We have spaces at the time you want them to visit.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Home Delivery</h3>
+                    <p>You are welcome to have it fast with delicious, delivery safely.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Best Location</h3>
+                    <p>Using locally sourced top-tier ingredients we provide a healthy fast food.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Menu Section -->
+    <section class="signature-menu">
+        <div class="container">
+            <h2 class="section-title">EXPLORE SIGNATURE MENU</h2>
+            <p class="section-subtitle">Make browsing to extra exotic with a set of first family menus. Your love food means to one of the existing menus we live the classics taste and crispy superiority of KFC.</p>
+            <div class="signature-buttons">
+                <button class="btn btn-primary">Order Now</button>
+                <button class="btn btn-secondary">View Menu</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="https://cdn.worldvectorlogo.com/logos/mcdonalds-15.svg" alt="McDonald's" class="logo">
+                    </div>
+                    <p>Designed by <strong>RAMIM AHMED</strong></p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#deals">Special Deals</a></li>
+                        <li><a href="#services">Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@mcdonalds.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Food Street, City</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; Copyright McDonalds Studio 2023. Designed by RAMIM AHMED</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: $<span id="cartTotal">0.00</span></span>
+            </div>
+            <button class="btn btn-primary checkout-btn">Checkout</button>
         </div>
     </div>
 
-    <script>
-        class CountdownTimer {
-            constructor() {
-                this.totalSeconds = 0;
-                this.remainingSeconds = 0;
-                this.intervalId = null;
-                this.isRunning = false;
-                
-                this.hoursInput = document.getElementById('hours');
-                this.minutesInput = document.getElementById('minutes');
-                this.secondsInput = document.getElementById('seconds');
-                this.display = document.getElementById('display');
-                this.startBtn = document.getElementById('startBtn');
-                this.pauseBtn = document.getElementById('pauseBtn');
-                this.resetBtn = document.getElementById('resetBtn');
-                this.progressCircle = document.getElementById('progress-circle');
-                
-                this.setupProgressCircle();
-                this.bindEvents();
-                this.updateDisplay();
-            }
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
 
-            setupProgressCircle() {
-                const radius = 90;
-                const circumference = 2 * Math.PI * radius;
-                this.progressCircle.style.strokeDasharray = circumference;
-                this.progressCircle.style.strokeDashoffset = circumference;
-            }
-
-            bindEvents() {
-                this.startBtn.addEventListener('click', () => this.start());
-                this.pauseBtn.addEventListener('click', () => this.pause());
-                this.resetBtn.addEventListener('click', () => this.reset());
-                
-                [this.hoursInput, this.minutesInput, this.secondsInput].forEach(input => {
-                    input.addEventListener('input', () => {
-                        if (!this.isRunning) {
-                            this.updateDisplay();
-                        }
-                    });
-                });
-            }
-
-            getTotalSeconds() {
-                const hours = parseInt(this.hoursInput.value) || 0;
-                const minutes = parseInt(this.minutesInput.value) || 0;
-                const seconds = parseInt(this.secondsInput.value) || 0;
-                return hours * 3600 + minutes * 60 + seconds;
-            }
-
-            start() {
-                if (!this.isRunning) {
-                    this.totalSeconds = this.getTotalSeconds();
-                    this.remainingSeconds = this.totalSeconds;
-                }
-
-                if (this.remainingSeconds <= 0) {
-                    alert('Please set a valid time!');
-                    return;
-                }
-
-                this.isRunning = true;
-                this.startBtn.disabled = true;
-                this.pauseBtn.disabled = false;
-                this.disableInputs(true);
-
-                this.intervalId = setInterval(() => {
-                    this.remainingSeconds--;
-                    this.updateDisplay();
-                    this.updateProgress();
-
-                    if (this.remainingSeconds <= 0) {
-                        this.complete();
-                    }
-                }, 1000);
-            }
-
-            pause() {
-                this.isRunning = false;
-                clearInterval(this.intervalId);
-                this.startBtn.disabled = false;
-                this.pauseBtn.disabled = true;
-            }
-
-            reset() {
-                this.isRunning = false;
-                clearInterval(this.intervalId);
-                this.remainingSeconds = 0;
-                this.totalSeconds = 0;
-                
-                this.startBtn.disabled = false;
-                this.pauseBtn.disabled = true;
-                this.disableInputs(false);
-                
-                this.display.classList.remove('warning');
-                this.updateDisplay();
-                this.resetProgress();
-            }
-
-            complete() {
-                this.isRunning = false;
-                clearInterval(this.intervalId);
-                this.startBtn.disabled = false;
-                this.pauseBtn.disabled = true;
-                this.disableInputs(false);
-                
-                alert('Time\'s up! ⏰');
-                this.playNotificationSound();
-            }
-
-            updateDisplay() {
-                let seconds;
-                
-                if (this.isRunning || this.remainingSeconds > 0) {
-                    seconds = this.remainingSeconds;
-                } else {
-                    seconds = this.getTotalSeconds();
-                }
-
-                const hours = Math.floor(seconds / 3600);
-                const minutes = Math.floor((seconds % 3600) / 60);
-                const secs = seconds % 60;
-
-                let displayText;
-                if (hours > 0) {
-                    displayText = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-                } else {
-                    displayText = `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-                }
-
-                this.display.textContent = displayText;
-
-                // Add warning style when time is running low
-                if (this.isRunning && seconds <= 10 && seconds > 0) {
-                    this.display.classList.add('warning');
-                } else {
-                    this.display.classList.remove('warning');
-                }
-            }
-
-            updateProgress() {
-                const radius = 90;
-                const circumference = 2 * Math.PI * radius;
-                const progress = (this.totalSeconds - this.remainingSeconds) / this.totalSeconds;
-                const offset = circumference - (progress * circumference);
-                this.progressCircle.style.strokeDashoffset = offset;
-            }
-
-            resetProgress() {
-                const radius = 90;
-                const circumference = 2 * Math.PI * radius;
-                this.progressCircle.style.strokeDashoffset = circumference;
-            }
-
-            disableInputs(disabled) {
-                this.hoursInput.disabled = disabled;
-                this.minutesInput.disabled = disabled;
-                this.secondsInput.disabled = disabled;
-            }
-
-            playNotificationSound() {
-                // Create a simple beep sound using Web Audio API
-                try {
-                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
-                    
-                    oscillator.frequency.value = 800;
-                    oscillator.type = 'sine';
-                    
-                    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
-                    
-                    oscillator.start(audioContext.currentTime);
-                    oscillator.stop(audioContext.currentTime + 1);
-                } catch (e) {
-                    console.log('Audio notification not supported');
-                }
-            }
-        }
-
-        // Initialize the timer when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            new CountdownTimer();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
